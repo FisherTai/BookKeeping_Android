@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">記帳軟體</string>
+
+    <string name="menu_account_title">帳戶1</string>
+    <string name="menu_account2_title">帳戶2</string>
+
+    <string name="menu_setting">設定</string>
+    <string name="menu_chart">圖表</string>
+    
+    <string name="item_tv_expenditure">支出 -$%s</string>
+    <string name="item_tv_income">收入 -$%s</string>
+</resources>
