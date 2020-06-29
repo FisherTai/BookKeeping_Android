@@ -15,7 +15,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends BaseActivity {
     DrawerLayout mDreawerLayout;
-    FloatingActionButton fab;
 
     @Override
     protected int getContenView() {
@@ -24,7 +23,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViewData() {
-        fab.setScaleType(ImageView.ScaleType.CENTER); //fab的圖標大小会自动调整成24dp,在这另外手动调整。
 
         mDreawerLayout.setFitsSystemWindows(true); //讓狀態列符合滑出頁面的顏色
 //        mDreawerLayout.setClipToPadding(false); // 這個屬性能消除狀態列上方的內距，就直接設置在XML了
@@ -41,7 +39,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initLayoutView() {
         super.initLayoutView();
-        fab = findViewById(R.id.fab_add);
         mDreawerLayout = findViewById(R.id.drawer_layout);
     }
 

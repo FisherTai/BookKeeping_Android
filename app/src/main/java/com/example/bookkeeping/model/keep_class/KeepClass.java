@@ -2,6 +2,7 @@ package com.example.bookkeeping.model.keep_class;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -16,6 +17,9 @@ public class KeepClass {
 
     @NonNull
     private String kc_type;
+
+    @Ignore
+    private int icon;
 
     public Long getKc_num() {
         return kc_num;
