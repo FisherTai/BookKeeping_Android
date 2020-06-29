@@ -20,9 +20,10 @@ public interface AccountDao {
     @Delete
     void deleate(Account account);
 
-    @Query("SELECT * FROM Account WHERE ac_name LIKE ac_name")
-    Account findByID(String ac_num);
+    @Query("SELECT * FROM Account WHERE ac_num LIKE :ac_num")
+    Account findByID(Long ac_num);
 
     @Query("SELECT * FROM ACCOUNT")
     List<Account> getAll ();
+
 }
