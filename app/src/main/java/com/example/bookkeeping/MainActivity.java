@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity {
         mDreawerLayout.setFitsSystemWindows(true); //讓狀態列符合滑出頁面的顏色
 //        mDreawerLayout.setClipToPadding(false); // 這個屬性能消除狀態列上方的內距，就直接設置在XML了
 
+        //記帳主頁面
         BookKeepFragment bkFragment = (BookKeepFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if(bkFragment == null){
             bkFragment = BookKeepFragment.newInstance();
