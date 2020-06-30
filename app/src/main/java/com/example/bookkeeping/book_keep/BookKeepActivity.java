@@ -1,20 +1,19 @@
-package com.example.bookkeeping;
+package com.example.bookkeeping.book_keep;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
-import com.example.bookkeeping.book_keep.BookKeepFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.bookkeeping.BaseActivity;
+import com.example.bookkeeping.MyUtil;
+import com.example.bookkeeping.R;
 
-public class MainActivity extends BaseActivity {
+public class BookKeepActivity extends BaseActivity {
     DrawerLayout mDreawerLayout;
+    BookKeepPresenter bookKeepPresenter;
 
     @Override
     protected int getContenView() {
@@ -26,14 +25,13 @@ public class MainActivity extends BaseActivity {
 
         mDreawerLayout.setFitsSystemWindows(true); //讓狀態列符合滑出頁面的顏色
 //        mDreawerLayout.setClipToPadding(false); // 這個屬性能消除狀態列上方的內距，就直接設置在XML了
-
         //記帳主頁面
         BookKeepFragment bkFragment = (BookKeepFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if(bkFragment == null){
             bkFragment = BookKeepFragment.newInstance();
             MyUtil.getInstance().addFragmentToActivity(getSupportFragmentManager(),bkFragment,R.id.contentFrame);
         }
-
+        bookKeepPresenter = new BookKeepPresenter(bkFragment);
     }
 
     @Override

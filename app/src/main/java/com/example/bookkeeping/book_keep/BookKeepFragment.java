@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Switch;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bookkeeping.BaseFragment;
@@ -13,14 +13,16 @@ import com.example.bookkeeping.R;
 import com.example.bookkeeping.add_keep.AddKeepActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class BookKeepFragment extends BaseFragment {
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class BookKeepFragment extends BaseFragment implements BookKeepContract.View {
 
     private static BookKeepFragment instance;
+    private BookKeepContract.Presenter mPresenter;
 
-    private static final String TAG = "BookKeepFragment";
-    private static final int BookKeepToAddKeep = 0;
-    private static final int ADD_SUCCESS = 1;
-    private static final int ADD_FAIL = 2;
+    public static final int AddKeep = 10;
+    public static final int ADD_SUCCESS = 11;
+    public static final int ADD_FAIL = 12;
 
     private FloatingActionButton fab;
 
@@ -30,7 +32,6 @@ public class BookKeepFragment extends BaseFragment {
         }
         return instance;
     }
-
 
     @Override
     protected int getContenView() {
@@ -42,18 +43,12 @@ public class BookKeepFragment extends BaseFragment {
         fab = getActivity().findViewById(R.id.fab_add);
         fab.setScaleType(ImageView.ScaleType.CENTER); //fab的圖標大小会自动调整成24dp,在这另外手动调整。
         fab.setOnClickListener(v ->
-                jump()
+                mPresenter.addNewkeep()
         );
-    }
-
-    private void jump(){
-        Intent intent = new Intent(getActivity(), AddKeepActivity.class);
-        startActivityForResult(intent,BookKeepToAddKeep);
     }
 
     @Override
     protected void initViewData() {
-
 
     }
 
@@ -61,14 +56,28 @@ public class BookKeepFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch(resultCode){
+        if (requestCode != AddKeep) {
+            return;
+        }
+        switch (resultCode) {
             case ADD_SUCCESS:
-                Log.d(TAG, "onActivityResult: ADD_SUCCESS");
+
                 break;
             case ADD_FAIL:
-                Log.d(TAG, "onActivityResult: ADD_FAIL");
+
                 break;
         }
 
+    }
+
+    @Override
+    public void setPresenter(@NonNull BookKeepContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
+
+    @Override
+    public void showAddKeep() {
+        Intent intent = new Intent(getActivity(), AddKeepActivity.class);
+        startActivityForResult(intent, AddKeep);
     }
 }

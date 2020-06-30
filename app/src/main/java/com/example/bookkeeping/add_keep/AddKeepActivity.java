@@ -2,6 +2,7 @@ package com.example.bookkeeping.add_keep;
 
 import com.example.bookkeeping.BaseActivity;
 import com.example.bookkeeping.R;
+import com.example.bookkeeping.book_keep.BookKeepFragment;
 
 public class AddKeepActivity extends BaseActivity {
     @Override
@@ -11,6 +12,6 @@ public class AddKeepActivity extends BaseActivity {
 
     @Override
     protected void initViewData() {
-        setResult(1);
+        setResult(BookKeepFragment.ADD_SUCCESS);
     }
 }
