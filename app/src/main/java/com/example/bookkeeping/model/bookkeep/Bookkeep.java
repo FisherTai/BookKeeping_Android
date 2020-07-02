@@ -12,7 +12,7 @@ public class Bookkeep {
     private int bk_num;
 
     @NonNull
-    private String kc_num;
+    private Long kc_num;
 
     @NonNull
     private String bk_description;
@@ -31,11 +31,11 @@ public class Bookkeep {
         this.bk_num = bk_num;
     }
 
-    public String getKc_num() {
+    public Long getKc_num() {
         return kc_num;
     }
 
-    public void setKc_num(String kc_num) {
+    public void setKc_num(Long kc_num) {
         this.kc_num = kc_num;
     }
 
@@ -63,7 +63,7 @@ public class Bookkeep {
         this.bk_amount = bk_amount;
     }
 
-    public Bookkeep(int bk_num, String kc_num, String bk_description, String bk_date, String bk_amount) {
+    public Bookkeep(int bk_num, Long kc_num, String bk_description, String bk_date, String bk_amount) {
         this.bk_num = bk_num;
         this.kc_num = kc_num;
         this.bk_description = bk_description;

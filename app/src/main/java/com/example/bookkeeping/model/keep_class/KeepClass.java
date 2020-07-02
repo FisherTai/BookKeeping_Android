@@ -1,22 +1,25 @@
 package com.example.bookkeeping.model.keep_class;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class KeepClass {
+    private static final String TAG = "KeepClass";
 
     @PrimaryKey
     @NonNull
+    @ColumnInfo
     private Long kc_num;
 
     @NonNull
     private String kc_name;
 
     @NonNull
-    private String kc_type;
+    private int kc_type;
 
     @Ignore
     private int icon;
@@ -37,15 +40,15 @@ public class KeepClass {
         this.kc_name = kc_name;
     }
 
-    public String getKc_type() {
+    public int getKc_type() {
         return kc_type;
     }
 
-    public void setKc_type(String kc_type) {
+    public void setKc_type(int kc_type) {
         this.kc_type = kc_type;
     }
 
-    public KeepClass(@NonNull Long kc_num, String kc_name, String kc_type) {
+    public KeepClass(@NonNull Long kc_num, String kc_name, int kc_type) {
         this.kc_num = kc_num;
         this.kc_name = kc_name;
         this.kc_type = kc_type;

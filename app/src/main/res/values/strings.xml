@@ -9,4 +9,13 @@
     
     <string name="item_tv_expenditure">支出 -$%s</string>
     <string name="item_tv_income">收入 -$%s</string>
+
+    <string name="book_keep_total_assets">總資產: $%s</string>
+    <string name="book_keep_budget">預算: $%s / $%s</string>
+
+    <string name="add_keep_expenditures">支出</string>
+    <string name="add_keep_income">收入</string>
+    <string name="add_keep_class">類型</string>
+    <string name="add_keep_account">帳戶</string>
+    <string name="add_keep_des">描述</string>
 </resources>

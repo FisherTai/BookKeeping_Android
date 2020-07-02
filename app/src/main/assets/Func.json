@@ -1,0 +1,79 @@
+{
+  "keepclass": [
+    {
+      "kc_num": 101,
+      "kc_name": "三餐",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 102,
+      "kc_name": "零食",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 103,
+      "kc_name": "服飾",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 104,
+      "kc_name": "居住",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 105,
+      "kc_name": "交通",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 106,
+      "kc_name": "購物",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 107,
+      "kc_name": "出遊",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 108,
+      "kc_name": "醫療",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 109,
+      "kc_name": "電話",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 110,
+      "kc_name": "債務",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 111,
+      "kc_name": "送禮",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 112,
+      "kc_name": "呆帳",
+      "kc_type": 1
+    },
+    {
+      "kc_num": 201,
+      "kc_name": "薪資",
+      "kc_type": 2
+    },
+    {
+      "kc_num": 202,
+      "kc_name": "獎金",
+      "kc_type": 2
+    },
+    {
+      "kc_num": 203,
+      "kc_name": "禮金",
+      "kc_type": 2
+    }
+  ]
+}

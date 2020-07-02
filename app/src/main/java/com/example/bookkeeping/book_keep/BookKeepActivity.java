@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.example.bookkeeping.BaseActivity;
 import com.example.bookkeeping.MyUtil;
 import com.example.bookkeeping.R;
+import com.example.bookkeeping.model.LocalDataBase;
 
 public class BookKeepActivity extends BaseActivity {
     DrawerLayout mDreawerLayout;
@@ -31,7 +32,8 @@ public class BookKeepActivity extends BaseActivity {
             bkFragment = BookKeepFragment.newInstance();
             MyUtil.getInstance().addFragmentToActivity(getSupportFragmentManager(),bkFragment,R.id.contentFrame);
         }
-        bookKeepPresenter = new BookKeepPresenter(bkFragment);
+
+        bookKeepPresenter = new BookKeepPresenter(bkFragment,getApplicationContext());
     }
 
     @Override

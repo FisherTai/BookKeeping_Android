@@ -18,11 +18,11 @@ public abstract class LocalDataBase extends RoomDatabase {
 
     private static LocalDataBase Instance;
 
-    abstract BookkeepDao bookkeepDao();
+    public abstract BookkeepDao bookkeepDao();
 
-    abstract AccountDao accountDao();
+    public abstract AccountDao accountDao();
 
-    abstract KeepClassDao keepClassDao();
+    public abstract KeepClassDao keepClassDao();
 
     public static LocalDataBase buildDatabase(Context context) {
 
