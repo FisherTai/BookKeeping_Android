@@ -18,7 +18,6 @@ import com.example.bookkeeping.Config;
 import com.example.bookkeeping.R;
 import com.example.bookkeeping.book_keep.BookKeepFragment;
 import com.example.bookkeeping.model.keep_class.KeepClass;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class AddKeepActivity extends BaseActivity {
         new Thread(mRunnable).start();
 
         classRv.setHasFixedSize(true);
-        classRv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
+        classRv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
     }
 
@@ -66,6 +65,7 @@ public class AddKeepActivity extends BaseActivity {
     private class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHolder> {
 
         private List<KeepClass> classList;
+        private int selectedItem = -1;
 
         public ClassAdapter(List<KeepClass> classList) {
             this.classList = classList;
@@ -81,8 +81,45 @@ public class AddKeepActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
             final KeepClass kc = classList.get(position);
-            holder.classIcon.setImageResource(R.drawable.ic_logo_money);
             holder.className.setText(kc.getKc_name());
+            if (kc.getIcon() != 0) {
+                holder.classIcon.setImageResource(kc.getIcon());
+            } else {
+                holder.classIcon.setImageResource(R.drawable.ic_logo_money);
+            }
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.classIcon.setBackground(getDrawable(R.drawable.bg_item_select));
+///////////////////////////////////////////////////////////////////
+                    if (selectedItem == position) {
+                        ClassViewHolder vhNew = (ClassViewHolder) classRv.findViewHolderForLayoutPosition(selectedItem);
+                        vhNew.classIcon.setImageResource(R.drawable.bg_item_select);
+                        selectedItem = -1;
+                    } else if (selectedItem != -1) {
+                        ClassViewHolder couponVH = (ClassViewHolder) classRv.findViewHolderForLayoutPosition(selectedItem);
+                        if (couponVH != null) {//还在屏幕里
+                            couponVH.classIcon.setImageResource(R.drawable.bg_item_not_select);
+                        } else {
+                            //些极端情况，holder被缓存在Recycler的cacheView里，
+                            //此时拿不到ViewHolder，但是也不会回调onBindViewHolder方法。所以add一个异常处理
+                            notifyItemChanged(selectedItem);
+                        }
+                        //设置新Item的勾选状态
+                        selectedItem = position;
+                        ClassViewHolder vhNew = (ClassViewHolder) classRv.findViewHolderForLayoutPosition(selectedItem);
+                        vhNew.classIcon.setImageResource(R.drawable.bg_item_select);
+                    } else if (selectedItem == -1) {
+                        ClassViewHolder couponVH = (ClassViewHolder) classRv.findViewHolderForLayoutPosition(position);
+                        //设置新Item的勾选状态
+                        selectedItem = position;
+                        couponVH.classIcon.setImageResource(R.drawable.bg_item_not_select);
+                    }
+                    ///////////////////////////////////////////////////////////////////
+                }
+            });
+
         }
 
         @Override

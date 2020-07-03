@@ -23,7 +23,7 @@ public interface KeepClassDao {
     void deleate(KeepClass keepClass);
 
     @Query("SELECT * FROM KeepClass WHERE kc_num LIKE :kc_num")
-    KeepClass findByID(Long kc_num);
+    KeepClass findByID(int kc_num);
 
     @Query("SELECT * FROM KeepClass")
     List<KeepClass> getAll();
