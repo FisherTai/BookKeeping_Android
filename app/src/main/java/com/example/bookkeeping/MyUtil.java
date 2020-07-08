@@ -59,7 +59,6 @@ public class MyUtil {
     }
 
     /**
-     *
      * @param context
      */
     public void initDB(Context context) {
@@ -75,9 +74,11 @@ public class MyUtil {
      */
     private String readAssetsJson(Context context) {
         AssetManager assetManager = context.getAssets();
+        InputStream is = null;
+        BufferedReader br = null;
         try {
-            InputStream is = assetManager.open("Func.json");
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            is = assetManager.open("Func.json");
+            br = new BufferedReader(new InputStreamReader(is));
             StringBuilder stringBuilder = new StringBuilder();
             String str;
             while ((str = br.readLine()) != null) {
@@ -87,6 +88,17 @@ public class MyUtil {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+                if (br != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
